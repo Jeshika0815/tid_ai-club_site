@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIサークル 勧誘イベント企画書</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f3ee;
+    --accent: #E8451A;
+    --accent2: #F2A623;
+    --gray: #2a2a2a;
+    --gray2: #444;
+    --border: #333;
+    --mono: 'Space Mono', monospace;
+    --serif: 'Noto Serif JP', serif;
+    --sans: 'Zen Kaku Gothic New', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--sans);
+    line-height: 1.7;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 3rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    border: 1px solid rgba(232,69,26,0.15);
+    pointer-events: none;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 1px solid rgba(242,166,35,0.1);
+    pointer-events: none;
+  }
+
+  .cover-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gray2);
+    letter-spacing: 0.1em;
+  }
+
+  .cover-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    padding: 4rem 0;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .tag::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+
+  .cover-title {
+    font-family: var(--sans);
+    font-weight: 900;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+  }
+
+  .cover-title .accent-word {
+    color: var(--accent);
+    display: inline-block;
+  }
+  .cover-title .accent-small {
+    font-size: 0.5em;
+    color: var(--accent2);
+    letter-spacing: 0.05em;
+  }
+
+  .cover-catch {
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    color: #aaa;
+    font-family: var(--serif);
+    letter-spacing: 0.05em;
+    max-width: 480px;
+    border-left: 2px solid var(--accent);
+    padding-left: 1rem;
+  }
+
+  .cover-footer {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gray2);
+    display: flex;
+    gap: 2rem;
+  }
+
+  /* ── SECTION COMMON ── */
+  .section {
+    padding: 5rem 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-weight: 900;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  /* ── SUMMARY GRID ── */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+
+  .summary-item {
+    background: var(--black);
+    padding: 2rem 1.5rem;
+  }
+
+  .summary-item .item-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .summary-item .item-value {
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+
+  .summary-item .item-sub {
+    font-size: 0.78rem;
+    color: #777;
+    margin-top: 0.4rem;
+    font-family: var(--mono);
+  }
+
+  /* ── GOAL SECTION ── */
+  .goal-block {
+    margin-top: 3rem;
+  }
+
+  .goal-main {
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-weight: 700;
+    line-height: 1.5;
+    padding: 2rem;
+    border: 1px solid var(--accent);
+    border-left: 4px solid var(--accent);
+    background: rgba(232,69,26,0.04);
+    margin-bottom: 1rem;
+  }
+
+  .goal-sub {
+    font-size: 1rem;
+    color: #aaa;
+    padding: 1.5rem 2rem;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent2);
+    background: rgba(242,166,35,0.03);
+    font-family: var(--serif);
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .tl-item {
+    display: grid;
+    grid-template-columns: 90px 1px 1fr;
+    gap: 0 1.5rem;
+    min-height: 80px;
+  }
+
+  .tl-time {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    padding-top: 1.5rem;
+    text-align: right;
+  }
+
+  .tl-line-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tl-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .tl-dot.accent2 { background: var(--accent2); }
+
+  .tl-line {
+    width: 1px;
+    flex: 1;
+    background: var(--border);
+    margin-top: 4px;
+  }
+
+  .tl-item:last-child .tl-line { display: none; }
+
+  .tl-content {
+    padding: 1.25rem 0 2rem;
+  }
+
+  .tl-content .tl-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .tl-content .tl-desc {
+    font-size: 0.88rem;
+    color: #999;
+    font-family: var(--serif);
+    line-height: 1.6;
+  }
+
+  .tl-badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+  .tl-badge.red { background: var(--accent); color: #fff; }
+  .tl-badge.amber { background: var(--accent2); color: #000; }
+  .tl-badge.gray { border: 1px solid var(--border); color: #777; }
+
+  /* ── TEAM CARDS ── */
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 640px) {
+    .team-grid { grid-template-columns: 1fr; }
+  }
+
+  .team-card {
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .team-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .team-card.project::before { background: var(--accent); }
+  .team-card.creator::before { background: var(--accent2); }
+
+  .team-card-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+  .team-card.project .team-card-label { color: var(--accent); }
+  .team-card.creator .team-card-label { color: var(--accent2); }
+
+  .team-card-title {
+    font-weight: 900;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  .team-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.88rem;
+    color: #bbb;
+    margin-bottom: 0.6rem;
+    font-family: var(--serif);
+  }
+
+  .team-feature::before {
+    content: '→';
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #555;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── OUTPUT SECTION ── */
+  .output-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 640px) {
+    .output-grid { grid-template-columns: 1fr; }
+  }
+
+  .output-item {
+    background: var(--black);
+    padding: 2rem 1.5rem;
+  }
+
+  .output-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
+  .output-title {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .output-desc {
+    font-size: 0.82rem;
+    color: #777;
+    font-family: var(--serif);
+    line-height: 1.6;
+  }
+
+  /* ── FLOW NOTE ── */
+  .flow-note {
+    margin-top: 3rem;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    background: #111;
+    font-size: 0.9rem;
+    color: #aaa;
+    font-family: var(--serif);
+    line-height: 1.8;
+  }
+
+  .flow-note strong {
+    color: var(--white);
+    font-family: var(--sans);
+  }
+
+  /* ── CTA / CLOSE ── */
+  .cta {
+    padding: 5rem 3rem;
+    text-align: center;
+  }
+
+  .cta-main {
+    font-weight: 900;
+    font-size: clamp(2rem, 5vw, 4rem);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .cta-main .hi { color: var(--accent); }
+
+  .cta-sub {
+    font-size: 1rem;
+    color: #777;
+    font-family: var(--serif);
+    margin-bottom: 3rem;
+  }
+
+  .cta-box {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.75rem 2rem;
+    text-transform: uppercase;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; color: black; }
+    .cover, .section, .cta { border-color: #ddd; }
+    .cover::before, .cover::after { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-meta">
+    <span>AIサークル — 勧誘イベント企画書</span>
+    <span>RECRUITMENT EVENT PLAN</span>
+  </div>
+
+  <div class="cover-main">
+    <div class="tag">Event Proposal</div>
+    <h1 class="cover-title">
+      <span class="accent-word">「AI使い」</span><br>
+      になれ。<br>
+      <span class="accent-small">道具じゃなく、武器にする。</span>
+    </h1>
+    <p class="cover-catch">
+      AIを駆使して、まだ世界にないものを創り出す。<br>
+      それがこのサークルの合言葉。
+    </p>
+  </div>
+
+  <div class="cover-footer">
+    <span>対象：大学1年生・AI興味層</span>
+    <span>所要時間：30〜40分</span>
+    <span>形式：ハンズオン体験型</span>
+  </div>
+</div>
+
+<!-- 01 OVERVIEW -->
+<div class="section">
+  <div class="section-label">01 — Overview</div>
+  <h2 class="section-title">イベント概要</h2>
+  <p style="color:#aaa; font-family: var(--serif); max-width:600px; font-size:0.95rem;">
+    「AIって難しそう」という先入観を30分で壊す。参加者が自分の手で作品を仕上げ、
+    「これ、自分が作ったんだ」という実感を持って帰れるイベント。
+  </p>
+
+  <div class="summary-grid">
+    <div class="summary-item">
+      <div class="item-label">Target</div>
+      <div class="item-value">大学1年生<br>AIに興味ある人</div>
+      <div class="item-sub">学年・専攻不問</div>
+    </div>
+    <div class="summary-item">
+      <div class="item-label">Duration</div>
+      <div class="item-value">30〜40分</div>
+      <div class="item-sub">繰り返し開催可能</div>
+    </div>
+    <div class="summary-item">
+      <div class="item-label">Format</div>
+      <div class="item-value">ハンズオン<br>体験型</div>
+      <div class="item-sub">PC or スマホ持参</div>
+    </div>
+    <div class="summary-item">
+      <div class="item-label">Frequency</div>
+      <div class="item-value">定期開催</div>
+      <div class="item-sub">週1〜隔週など柔軟に</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 GOAL -->
+<div class="section">
+  <div class="section-label">02 — Goal</div>
+  <h2 class="section-title">目的・ゴール</h2>
+
+  <div class="goal-block">
+    <div class="goal-main">
+      🎯 メインゴール：AIを駆使して今までなかった「モノ」を創り出し、<strong style="color:var(--accent)">「AI使い」</strong>になる体験をする
+    </div>
+    <div class="goal-sub">
+      ✦ サブゴール：AIを使ってお絵描き・動画制作・アプリ開発を楽しむ。「これ、ツールで作ったの？」と人に思わせるクオリティを体験する。
+    </div>
+  </div>
+</div>
+
+<!-- 03 TIMELINE -->
+<div class="section">
+  <div class="section-label">03 — Timeline</div>
+  <h2 class="section-title">当日タイムライン</h2>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-time">0:00</div>
+      <div class="tl-line-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-badge red">Opening</div>
+        <div class="tl-title">つかみ：「AIって何ができるの？」</div>
+        <div class="tl-desc">サークルメンバーがAIで作った作品（画像・動画・アプリ）を一気に見せる。「え、これAI？」という驚きから始める。</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">0:05</div>
+      <div class="tl-line-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-badge gray">Intro</div>
+        <div class="tl-title">サークル紹介（5分）</div>
+        <div class="tl-desc">Project Team / Creator Team の2チーム制を説明。どんな人でも活動できることを強調。</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">0:10</div>
+      <div class="tl-line-wrap"><div class="tl-dot accent2"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-badge amber">Hands-on</div>
+        <div class="tl-title">ハンズオン体験（20分）</div>
+        <div class="tl-desc">
+          参加者が実際にAIツールを触り、自分だけの作品を作る。<br>
+          └ 画像生成：Canva AI / Adobe Firefly など<br>
+          └ 動画生成：Runway / CapCut AI など<br>
+          └ アプリ開発：v0 / Claude など<br>
+          「あたかもツールで作ったように見える」作品が完成する体験をする。
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">0:30</div>
+      <div class="tl-line-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-badge gray">Share</div>
+        <div class="tl-title">作品シェア & クロージング（5〜10分）</div>
+        <div class="tl-desc">作ったものをその場で見せ合い。サークル入会の案内・次回イベント告知。作品はSNSにそのまま投稿できるクオリティ。</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 04 OUTPUT -->
+<div class="section">
+  <div class="section-label">04 — Output</div>
+  <h2 class="section-title">参加者が持ち帰るもの</h2>
+  <p style="color:#aaa; font-family:var(--serif); font-size:0.9rem; max-width:560px;">
+    AIで作ったとは思えない、人に見せたくなるクオリティの作品。<br>
+    「Photoshopで作ったの？」と言われるレベルを目指す。
+  </p>
+
+  <div class="output-grid">
+    <div class="output-item">
+      <div class="output-icon">🖼️</div>
+      <div class="output-title">AI生成画像</div>
+      <div class="output-desc">自分のアイデアを言葉にするだけで、プロ級ビジュアルが完成。アイコンやSNS投稿に使える。</div>
+    </div>
+    <div class="output-item">
+      <div class="output-icon">🎬</div>
+      <div class="output-title">AI動画 / リール</div>
+      <div class="output-desc">数十秒の動画がAIで自動生成。そのままInstagramやTikTokに投稿できるクオリティ。</div>
+    </div>
+    <div class="output-item">
+      <div class="output-icon">📱</div>
+      <div class="output-title">簡易アプリ / UI</div>
+      <div class="output-desc">v0などのAIでアプリのUIをゼロから生成。「俺、アプリ作った」を30分で体験できる。</div>
+    </div>
+  </div>
+
+  <div class="flow-note">
+    💡 <strong>ポイント：</strong>「これAIで作ったんだ」ではなく、「これどうやって作ったの？」と聞かれる体験にこだわる。
+    参加者が翌日に友達に見せたくなるようなクオリティが、次の集客につながる。
+  </div>
+</div>
+
+<!-- 05 TEAM -->
+<div class="section">
+  <div class="section-label">05 — Join</div>
+  <h2 class="section-title">チーム紹介</h2>
+
+  <div class="team-grid">
+    <div class="team-card project">
+      <div class="team-card-label">Project Team</div>
+      <div class="team-card-title">がっつり<br>創りたい人へ</div>
+      <div class="team-feature">週2〜3回の定期活動</div>
+      <div class="team-feature">様々なプロジェクトに参加</div>
+      <div class="team-feature">チームで本格的なモノを作る</div>
+      <div class="team-feature">AI × 開発・映像・デザイン など</div>
+    </div>
+    <div class="team-card creator">
+      <div class="team-card-label">Creator Team</div>
+      <div class="team-card-title">自分のペースで<br>楽しみたい人へ</div>
+      <div class="team-feature">集まるのは月1回だけ</div>
+      <div class="team-feature">空き時間にAIお絵描き・動画制作</div>
+      <div class="team-feature">v0などでアプリ開発もOK</div>
+      <div class="team-feature">ゆるく、でも本物を作る</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-main">
+    <span class="hi">「AI使い」</span>になれ。<br>道具じゃなく、<span class="hi">武器</span>にする。
+  </div>
+  <p class="cta-sub">AIサークル — 定期勧誘イベント</p>
+  <div class="cta-box">Join Us — AIサークル</div>
+</div>
+
+</body>
+</html>
