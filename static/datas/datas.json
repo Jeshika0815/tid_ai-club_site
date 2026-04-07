@@ -1,0 +1,9 @@
+{
+	articles:{
+		1: {
+			title: "Untitled",
+			icons: "/static/img/articles/sample1.png",
+			content: "/static/content/article1.md"
+		}
+	}
+}

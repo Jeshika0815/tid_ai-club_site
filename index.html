@@ -19,7 +19,7 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#teams">Teams</a></li>
-    <li><a href="#gallery">Gallery</a></li>
+    <!--li><a href="#gallery">Gallery</a></li-->
     <li><a href="#join">Join</a></li>
   </ul>
   <a href="#join" class="nav-cta">Join Us →</a>
@@ -104,7 +104,8 @@
 
   <div class="teams-grid">
     <!-- PROJECT TEAM -->
-    <a href="https://your-github.github.io/project-team/" target="_blank" rel="noopener" class="team-card project reveal">
+    <!--a href="https://your-github.github.io/project-team/" target="_blank" rel="noopener" class="team-card project reveal"-->
+    <div class="team-card creator reveal">
       <div class="team-card-bg"></div>
       <div class="tc-badge">Project Team</div>
       <h3 class="tc-title">がっつり<br>創りたい人へ</h3>
@@ -115,14 +116,15 @@
         <li>AI × 開発 / 映像 / デザインなど</li>
         <li>本格的なアウトプットを目指す</li>
       </ul>
-      <div class="tc-link">
+      <!--div class="tc-link">
         <span>詳細を見る（GitHub Pages）</span>
         <span>↗</span>
-      </div>
-    </a>
+      </div-->
+    <!--/a--></div>
 
     <!-- CREATOR TEAM -->
-    <a href="https://your-github.github.io/creator-team/" target="_blank" rel="noopener" class="team-card creator reveal">
+    <!--a href="https://your-github.github.io/creator-team/" target="_blank" rel="noopener" class="team-card creator reveal"-->
+    <div class="team-card creator reveal">
       <div class="team-card-bg"></div>
       <div class="tc-badge" style="color:var(--amber); border-color:rgba(245,158,11,0.3); background:rgba(245,158,11,0.06);">Creator Team</div>
       <h3 class="tc-title">自分のペースで<br>楽しみたい人へ</h3>
@@ -133,15 +135,16 @@
         <li>v0などでアプリ開発もOK</li>
         <li>ゆるく、でも本物を作る</li>
       </ul>
-      <div class="tc-link" style="color:var(--amber);">
+      <!--div class="tc-link" style="color:var(--amber);">
         <span>詳細を見る（GitHub Pages）</span>
         <span>↗</span>
-      </div>
-    </a>
+      </div-->
+    <!--/a--></div>
   </div>
 </section>
 
 <!-- GALLERY -->
+<!--
 <section id="gallery">
   <div class="section-eyebrow">03 — Gallery</div>
   <h2 class="section-title reveal">活動ギャラリー</h2>
@@ -186,10 +189,10 @@
   </div>
   <p class="gallery-note reveal">← 実際の活動写真・作品に差し替えてください →</p>
 </section>
-
+-->
 <!-- JOIN -->
 <section id="join">
-  <div class="section-eyebrow">04 — Join</div>
+  <div class="section-eyebrow">03 — Join</div>
   <h2 class="section-title reveal">「AI使い」に<br><span style="color:var(--cyan)">なりたい人</span>、集まれ。</h2>
 
   <div class="join-layout">
@@ -200,71 +203,34 @@
       </p>
 
       <div class="social-links">
-        <a href="https://twitter.com/" target="_blank" rel="noopener" class="social-link">
+        <a href="https://twitter.com/tid_ai" target="_blank" rel="noopener" class="social-link">
           <div class="s-icon">𝕏</div>
           <span>Twitter / X</span>
-          <span class="s-url">@ai_circle</span>
+          <span class="s-url">@tid_ai</span>
         </a>
-        <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-link">
-          <div class="s-icon">📸</div>
+        <a href="https://instagram.com/tid_aicircle/" target="_blank" rel="noopener" class="social-link">
+          <div class="s-icon"></div>
           <span>Instagram</span>
           <span class="s-url">@ai_circle</span>
         </a>
-        <a href="https://github.com/" target="_blank" rel="noopener" class="social-link">
+        <!--a href="https://github.com/" target="_blank" rel="noopener" class="social-link">
           <div class="s-icon">⌥</div>
           <span>GitHub</span>
           <span class="s-url">github.com/ai-circle</span>
-        </a>
+        </a-->
       </div>
     </div>
 
     <div class="reveal">
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-field">
-            <label>名前</label>
-            <input type="text" placeholder="山田 太郎" required>
-          </div>
-          <div class="form-field">
-            <label>学年</label>
-            <select required>
-              <option value="" disabled selected>選択</option>
-              <option>大学1年</option>
-              <option>大学2年</option>
-              <option>大学3年</option>
-              <option>大学4年</option>
-              <option>大学院</option>
-              <option>その他</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-field full">
-          <label>メールアドレス</label>
-          <input type="email" placeholder="your@email.com" required>
-        </div>
-        <div class="form-row">
-          <div class="form-field">
-            <label>希望チーム</label>
-            <select>
-              <option value="" disabled selected>選択</option>
-              <option>Project Team</option>
-              <option>Creator Team</option>
-              <option>まだ決めていない</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label>SNS（任意）</label>
-            <input type="text" placeholder="@handle">
-          </div>
-        </div>
-        <div class="form-field full">
-          <label>メッセージ（任意）</label>
-          <textarea placeholder="興味があること、やってみたいことなど..."></textarea>
-        </div>
-        <div class="form-submit-row">
-          <button type="submit" class="btn-submit">送信する →</button>
-        </div>
-      </form>
+	<div align=center>
+	<h1>AIの広場</h1>
+	<h3>こちらより参加できます！</h3><br><br><br>
+  <a href="https://discord.com/channels/1338335969060978728/" target="_blank" rel="noopener" class="social-link">
+          <div class="s-icon"></div>
+          <span>Discord</span>
+          <span class="s-url">AIの広場</span>
+  </a>
+	</div>
     </div>
   </div>
 </section>
@@ -275,7 +241,7 @@
   <ul class="footer-nav">
     <li><a href="#about">About</a></li>
     <li><a href="#teams">Teams</a></li>
-    <li><a href="#gallery">Gallery</a></li>
+    <!--li><a href="#gallery">Gallery</a></li-->
     <li><a href="#join">Join</a></li>
   </ul>
   <p class="footer-copy">© 2026 AIサークル at TID. All rights reserved.</p>
@@ -332,19 +298,6 @@ window.addEventListener('scroll', () => {
     a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
   });
 });
-
-/* ── Form submit ── */
-function handleSubmit(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('.btn-submit');
-  btn.textContent = '送信完了 ✓';
-  btn.style.background = '#10b981';
-  setTimeout(() => {
-    btn.textContent = '送信する →';
-    btn.style.background = 'var(--cyan)';
-    e.target.reset();
-  }, 3000);
-}
 </script>
 </body>
 </html>
